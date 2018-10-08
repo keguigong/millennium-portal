@@ -1,235 +1,307 @@
-/* Custom Stylesheet */
-/**
- * Use this file to override Materialize files so you can update
- * the core Materialize files in the future
- *
- * Made By MaterializeCSS.com
- */
-
-
-footer.page-footer {
+#loading {
+  position: fixed;
   margin: 0;
+  z-index: 99;
+  width: 100vw;
+  height: 100vh;
+  background-color: #ECF0F1;
+}
+
+.loader,
+.loader:before,
+.loader:after {
+  background: #ffffff;
+  -webkit-animation: load1 1s infinite ease-in-out;
+  animation: load1 1s infinite ease-in-out;
+  width: 1em;
+  height: 4em;
+}
+
+.loader {
+  color: #ffffff;
+  text-indent: -9999em;
+  margin: 45vh auto;
+  position: relative;
+  font-size: 11px;
+  -webkit-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-animation-delay: -0.16s;
+  animation-delay: -0.16s;
+}
+
+.loader:before,
+.loader:after {
+  position: absolute;
+  top: 0;
+  content: '';
+}
+
+.loader:before {
+  left: -1.5em;
+  -webkit-animation-delay: -0.32s;
+   animation-delay: -0.32s;
+}
+
+.loader:after {
+  left: 1.5em;
+}
+
+@-webkit-keyframes load1 {
+  0%,
+  80%,
+  100% {
+    box-shadow: 0 0;
+    height: 4em;
+  }
+
+  40% {
+    box-shadow: 0 -2em;
+    height: 5em;
+  }
+}
+
+@keyframes load1 {
+  0%,
+  80%,
+  100% {
+    box-shadow: 0 0;
+    height: 4em;
+  }
+  40% {
+    box-shadow: 0 -2em;
+    height: 5em;
+  }
+}
+
+/*import fonts*/
+@font-face {
+    font-family: 'Formula1 Display';
+    font-style: normal;
+    font-weight: 600;
+    src: local('Formula1 Display Bold'), 
+    url(https://keguigong.org/fonts/Formula1_Display_Bold.otf)
+}
+
+@font-face {
+  font-family: 'Formula1 Display';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Formula1 Display Regular'),
+  url(https://keguigong.org/fonts/Formula1_Display_Regular.otf)
+}
+
+@font-face {
+  font-family: 'Formula1 Display';
+  font-style: italic;
+  font-weight: 300;
+  src: local('Formula1 Display Italic'),
+  url(https://keguigong.org/fonts/Formula1_Display_Italic.otf)
+}
+
+@font-face {
+  font-family: 'Formula1 Display';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Formula1 Display Black'),
+  url(https://keguigong.org/fonts/Formula1_Display_Black.otf)
+}
+
+.bold {
+  font-weight: 600;
+  word-wrap: break-word;
+}
+
+.extrabold {
+  font-weight: 700;
+}
+
+html {
+  font-family: 'Formula1 Display',sans-serif ;
+  font-weight: 300;
+  font-style: normal;
 }
 
 body {
-    display: flex;
-    min-height: 100vh;
-    flex-direction: column;
+  color: #25283D;
+  background-color: #ECF0F1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-main {
-    flex: 1 0 auto;
+a {
+  color: #8F3985;
+  text-decoration: none;
 }
 
-html {
-    font-family:'Lato',sans-serif;
+/*auto-hiding-navigation*/
+.cd-auto-hide-header {
+  position: fixed;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  background-color: rgba(255,255,255,0.5);
+  /* Force Hardware Acceleration */
+  -webkit-transform: translateZ(0);
+          transform: translateZ(0);
+  will-change: transform;
+  -webkit-transition: -webkit-transform .5s;
+  transition: -webkit-transform .5s;
+  transition: transform .5s;
+  transition: transform .5s, -webkit-transform .5s;
 }
 
-.gradient-custom {
-    background-image: -webkit-linear-gradient(30deg,#3366cc,#ff3366);
-    background-image: linear-gradient(30deg,#3366cc,#ff3366);
+.cd-auto-hide-header::after {
+  clear: both;
+  content: "";
+  display: block;
 }
 
-.gradient-custom-1 {
-    background-image: -webkit-linear-gradient(30deg,#ff3366,#3366cc);
-    background-image: linear-gradient(30deg,#ff3366,#3366cc);
+.cd-auto-hide-header.is-hidden {
+  -webkit-transform: translateY(-100%);
+  -ms-transform: translateY(-100%);
+      transform: translateY(-100%);
 }
 
-.opacity-custom {
-    opacity:0.5;
-    position: absolute;
+@media only screen and (min-width: 993px) {
+  .cd-auto-hide-header {
+    height: 80px;
+  }
 }
 
-.parallax-container {
-    height:750px;
+/*logo properties*/
+header .cd-logo {
+  position: absolute;
+  display: inline-block;
 }
 
-
-/*animation*/
-
-@import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css);
-
-* {
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
+header .cd-logo svg {
+  height: 30px;
+  vertical-align: middle;
 }
 
-html {
+header .cd-logo a {
+ font-size: 1.6em;
+ color: #37474f;
+}
+
+@media only screen and (min-width: 993px){
+  header .cd-logo {
+    left: auto;
+    margin-top: 25px;
+  }
+}
+
+@media only screen and (max-width: 992px) {
+  header .cd-logo {
+    left: 50%;
+    margin-top: 15px;
+    -webkit-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+        transform: translateX(-50%);
+  }
+}
+
+/*main*/
+svg.outlineanime g {
+  stroke: #ffffff;
+  stroke-width: 3;
+}
+
+main svg {
+  padding:0;
+  margin-top: 200px;
+  padding-bottom: 0;
+}
+
+@media only screen and (max-width: 992px) {
+  main svg {
     width: 100%;
-    height: 100%;
+  }
+
+  main .empty {
+    height: 150px;
+  }
+
+  main a {
+    font-size: 3.8rem;
+    line-height: 110%;
+  }
 }
 
-.clearfix {
-    zoom: 1;
+@media only screen and (min-width: 993px) {
+  main svg {
+    width: 80%;
+  }
+
+  main .empty {
+    height: 200px;
+  }
+
+  main a {
+    font-size: 4.2rem;
+    line-height: 110%;
+  }
 }
 
-    .clearfix:before, .clearfix:after {
-        content: "\0020";
-        display: block;
-        height: 0;
-        overflow: hidden;
-    }
-
-    .clearfix:after {
-        clear: both;
-    }
-
-body {
-    background: #ffffff;
-    font-size: 120%;
+/*gradient style*/
+.mini-bg-wrapper {
+  position: relative;
+  overflow: hidden;
+  padding-top:0px;
+  padding-bottom:0px;
 }
 
-.rabbit {
-    width: 5em;
-    height: 3em;
-    background: #ffffff;
-    border-radius: 70% 90% 60% 50%;
-    position: relative;
-    box-shadow: -0.2em 1em 0 -0.75em #b78e81;
-    -moz-transform: rotate(0deg) translate(-2em, 0);
-    -ms-transform: rotate(0deg) translate(-2em, 0);
-    -webkit-transform: rotate(0deg) translate(-2em, 0);
-    transform: rotate(0deg) translate(-2em, 0);
-    animation: hop 1s infinite linear;
-    z-index: 1;
+.mini-bg-design {
+  position: absolute;
+  width: 150%;
+  left: -25%;
+  height: 40vh;
+  -webkit-transform: rotate(-5deg) skew(-25deg, 0deg);
+  transform: rotate(-5deg) skew(-25deg, 0deg);
+  background: #d299c2;
+  background: -moz-linear-gradient(left, #d299c2 0%, #fef9d7 100%);
+  background: -webkit-linear-gradient(left, #d299c2 0%, #fef9d7 100%);
+  background: linear-gradient(to right, #d299c2 0%, #fef9d7 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d299c2', endColorstr='#fef9d7',GradientType=1 );                       
 }
 
-.no-flexbox .rabbit {
-    margin: 10em auto 0;
+/*footer styles*/
+footer .row .col{
+  margin-top: 30px;
 }
 
-.rabbit:before {
-    content: "";
-    position: absolute;
-    width: 1em;
-    height: 1em;
-    background: white;
-    border-radius: 100%;
-    top: 0.5em;
-    left: -0.3em;
-    box-shadow: 4em 0.4em 0 -0.35em #3f3334, 0.5em 1em 0 white, 4em 1em 0 -0.3em white, 4em 1em 0 -0.3em white, 4em 1em 0 -0.4em white;
-    animation: kick 1s infinite linear;
+footer li a {
+  color: #9e9e9e;
+}
+footer li a:hover {
+  padding: 0 0 10px 0;
+  border-bottom: 1.2px solid #ffffff;
+  color: #ffffff;
 }
 
-.rabbit:after {
-    content: "";
-    position: absolute;
-    width: 0.75em;
-    height: 2em;
-    background: white;
-    border-radius: 50% 100% 0 0;
-    -moz-transform: rotate(-30deg);
-    -ms-transform: rotate(-30deg);
-    -webkit-transform: rotate(-30deg);
-    transform: rotate(-30deg);
-    right: 1em;
-    top: -1em;
-    border-top: 1px solid #f7f5f4;
-    border-left: 1px solid #f7f5f4;
-    box-shadow: -0.5em 0em 0 -0.1em white;
+footer .l6 ul li {
+  margin-top: 20px;
 }
 
-.clouds {
-    background: white;
-    width: 2em;
-    height: 2em;
-    border-radius: 100% 100% 0 0;
-    position: relative;
-    top: -5em;
-    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
-    opacity: 0;
-    -moz-transform: translate(0, 0);
-    -ms-transform: translate(0, 0);
-    -webkit-transform: translate(0, 0);
-    transform: translate(0, 0);
-    animation: cloudy 1s infinite linear forwards;
-    box-shadow: 5em 2em 0 -0.3em white, -2em 2em 0 0 white;
+footer .l5 ul li {
+  display: inline-block;
+  margin-left:0;
+  margin-right:20px; 
 }
 
-    .clouds:before, .clouds:after {
-        content: "";
-        position: absolute;
-        box-shadow: 5em 2em 0 -0.3em white, -2em 2em 0 white;
-    }
-
-    .clouds:before {
-        width: 1.25em;
-        height: 1.25em;
-        border-radius: 100% 100% 0 100%;
-        background: white;
-        left: -30%;
-        bottom: 0;
-    }
-
-    .clouds:after {
-        width: 1.5em;
-        height: 1.5em;
-        border-radius: 100% 100% 100% 0;
-        background: white;
-        right: -30%;
-        bottom: 0;
-    }
-
-@keyframes hop {
-    20% {
-        -moz-transform: rotate(-10deg) translate(1em, -2em);
-        -ms-transform: rotate(-10deg) translate(1em, -2em);
-        -webkit-transform: rotate(-10deg) translate(1em, -2em);
-        transform: rotate(-10deg) translate(1em, -2em);
-        box-shadow: -0.2em 3em 0 -1em #b78e81;
-    }
-
-    40% {
-        -moz-transform: rotate(10deg) translate(3em, -4em);
-        -ms-transform: rotate(10deg) translate(3em, -4em);
-        -webkit-transform: rotate(10deg) translate(3em, -4em);
-        transform: rotate(10deg) translate(3em, -4em);
-        box-shadow: -0.2em 3.25em 0 -1.1em #b78e81;
-    }
-
-    60%, 75% {
-        -moz-transform: rotate(0) translate(4em, 0);
-        -ms-transform: rotate(0) translate(4em, 0);
-        -webkit-transform: rotate(0) translate(4em, 0);
-        transform: rotate(0) translate(4em, 0);
-        box-shadow: -0.2em 1em 0 -0.75em #b78e81;
-    }
+footer .l6 a img {
+  height: 25px;
+  vertical-align: middle;
 }
 
-@keyframes kick {
-    20%, 50% {
-        box-shadow: 4em 0.4em 0 -0.35em #3f3334, 0.5em 1.5em 0 white, 4em 1.75em 0 -0.3em white, 4em 1.75em 0 -0.3em white, 4em 1.9em 0 -0.4em white;
-    }
-
-    40% {
-        box-shadow: 4em 0.4em 0 -0.35em #3f3334, 0.5em 2em 0 white, 4em 1.75em 0 -0.3em white, 4.2em 1.75em 0 -0.2em white, 4.4em 1.9em 0 -0.2em white;
-    }
+footer .l5 a img {
+  width: 32px;
+  vertical-align: middle;
 }
 
-@keyframes cloudy {
-    40% {
-        filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=75);
-        opacity: 0.75;
-        -moz-transform: translate(-3em, 0);
-        -ms-transform: translate(-3em, 0);
-        -webkit-transform: translate(-3em, 0);
-        transform: translate(-3em, 0);
-    }
-
-    55% {
-        filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
-        opacity: 0;
-        -moz-transform: translate(-4em, 0);
-        -ms-transform: translate(-4em, 0);
-        -webkit-transform: translate(-4em, 0);
-        transform: translate(-4em, 0);
-    }
-
-    90% {
-        -moz-transform: translate(0, 0);
-        -ms-transform: translate(0, 0);
-        -webkit-transform: translate(0, 0);
-        transform: translate(0, 0);
-    }
+footer .empty {
+  margin-top: 40px;
 }
