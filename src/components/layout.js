@@ -9,7 +9,7 @@ import "../fonts/futurapt_demi_macroman/stylesheet.css"
 import "../fonts/futurapt_demiitalic_macroman/stylesheet.css"
 
 import Header from "./header"
-// import "./layout.css"
+import "./layout.css"
 import gatsbyLogo from "../images/gatsby.svg"
 
 const Layout = ({ children }) => (
@@ -57,7 +57,8 @@ const Layout = ({ children }) => (
         }}>
           <span>© {new Date().getFullYear()}. Built with {` `}</span>
           <img style={{ margin: `0 4px`}} src={gatsbyLogo} height="24" alt="react"/>
-          <a href="https://gatsbyjs.org">Gatsby.js.</a>
+          <a href="https://gatsbyjs.org">Gatsby.js</a>
+          <span>.</span>
         </footer>
       </div>
     )}

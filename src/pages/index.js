@@ -5,7 +5,8 @@ import Layout from "../components/layout";
 
 export const linkStyles = {
     display: `block`,
-    marginTop: `1rem`
+    marginTop: `1rem`,
+    width: `min-content`
 }
 
 class App extends React.Component{

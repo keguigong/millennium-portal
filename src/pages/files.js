@@ -10,17 +10,19 @@ export default ({ data }) => {
           <SEO title="files"/>
             <div>
                 <h1>My Site's Files</h1>
-                <table>
+                <table style={{maxWidth: "100%"}}>
                     <thead>
                         <tr>
                             <th>relativePath</th>
+                            <th>extension</th>
                             <th>prettySize</th>
                         </tr>
                     </thead>
                     <tbody>
                         {data.allFile.edges.map(({ node }, index) => (
                             <tr key={index}>
-                                <td>{node.relativePath}</td>
+                                <td>{node.name}</td>
+                                <td>{node.extension}</td>
                                 <td>{node.prettySize}</td>
                             </tr>
                         ))}
@@ -36,6 +38,7 @@ export const query = graphql`
     allFile {
       edges {
         node {
+          name
           extension
           prettySize
           relativePath
