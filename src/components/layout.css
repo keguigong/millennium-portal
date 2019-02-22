@@ -7,6 +7,7 @@ html {
   background-color: #ebe0f5;
 }
 body {
+  color: #2b2b2b;
   margin: 0;
 }
 article,
@@ -44,6 +45,9 @@ a {
   background-color: transparent;
   transition: background-color ease-in-out .35s,
               color ease-in-out .35s;
+}
+h1 {
+  color: #663399;
 }
 :not(h1) > a {
   padding: 0 0.3rem;
