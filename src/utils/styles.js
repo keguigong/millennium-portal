@@ -1,5 +1,7 @@
 import hex2rgba from "hex2rgba"
 import { keyframes } from "@emotion/core"
+/** @jsx jsx */
+import { jsx } from '@emotion/core'
 
 import presets, { colors } from "./presets"
 import { rhythm, scale, options } from "./typography"

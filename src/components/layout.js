@@ -12,6 +12,16 @@ import Header from "./header"
 import "./layout.css"
 import gatsbyLogo from "../images/gatsby.svg"
 
+export class FuturaWrapper extends React.Component{
+  render(){
+    return(
+      <div style={this.props.style}>
+        {this.props.children}
+      </div>
+    )
+  }
+}
+
 const Layout = ({ children }) => (
   <StaticQuery
     query={graphql`

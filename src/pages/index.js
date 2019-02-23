@@ -1,26 +1,61 @@
+/** @jsx jsx */
+import { jsx, keyframes } from '@emotion/core'
 import React from 'react'
-import { Link } from "gatsby"
 import SEO from "../components/seo"
-import Layout from "../components/layout";
+import Blocks  from "../pages/blocks"
+import { GooSpinner } from "react-spinners-kit"
 
-export const linkStyles = {
-    display: `block`,
-    marginTop: `1rem`,
-    width: `min-content`
-}
+class App extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            isLoaded: false
+        }
+    }
 
-class App extends React.Component{
-    render(){
-        return(
-            <Layout>
-                <SEO title="hello"/>
-                <h1>Page is under construction.</h1>
-                <span>Preview the pages:</span>
-                <Link style={linkStyles} to="files">files</Link>
-                <Link style={linkStyles} to="blog">blogs</Link>
-            </Layout>
-        );
+    componentDidMount = () => {
+        setInterval(() => {
+            this.setState({
+                isLoaded: true
+            })
+        }, 1000)
+    }
+
+    render() { 
+        if (this.state.isLoaded) {
+            return (
+                <div>
+                    <SEO title="links" />
+                    <Blocks />
+                </div>
+            );
+        }
+        else {
+            return (
+                <div css={styles.loading}>
+                    <SEO title="loading" />
+                    <GooSpinner
+                        size={40}
+                        color="#2b2b2b"
+                    // loading={true}
+                    />
+                    <h4>Loading...</h4>
+                </div>
+            );
+        }
     }
 }
-
+ 
 export default App;
+
+const styles = {
+    loading: {
+        display: `flex`,
+        flexDirection: `column`,
+        width: `100vw`,
+        minHeight: `100vh`,
+        alignItems: `center`,
+        justifyContent: `center`,
+        backgroundColor: `#f8f8f8`
+    }
+}
