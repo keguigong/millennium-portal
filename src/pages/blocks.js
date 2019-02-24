@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { jsx, keyframes } from '@emotion/core'
 import React from 'react';
-import { FuturaWrapper } from "../components/layout"
+import Layout from "../components/layout"
 import { Row, Col} from "antd"
 
 class Block extends React.Component {
@@ -26,8 +26,7 @@ class Block extends React.Component {
 class Blocks extends React.Component{
     render() {
         return(
-            <FuturaWrapper css={styles.container}>
-                <a css={styles.aTag} href="/"><h1 css={styles.links}>Links.</h1></a>
+            <Layout css={styles.container}>
                 <Row>
                     <Block name="GitHub" href="https://github.com/keguigong">
                         <svg viewBox="0 0 35.318 35.318">
@@ -108,19 +107,7 @@ class Blocks extends React.Component{
                         </svg>
                     </Block>
                 </Row>
-                <footer css={styles.footer}>
-                    <span>© {new Date().getFullYear()}. Built by</span>
-                    <a css={styles.aSvgTag}>@keguigong</a>
-                    <span>with</span>
-                    <a css={styles.aSvgTag}>
-                        <svg viewBox="0 0 1200 1200">
-                            <path d="M600 0C268.6 0 0 268.6 0 600s268.6 600 600 600 600-268.6 600-600S931.4 0 600 0zM266.6 933.3C176.1 842.8 131 724.6 129.6 606L594 1070.4c-118.6-1.4-236.8-46.5-327.4-137.1zm437.7 126.1L140.6 495.7c47.5-210.1 235-367.1 459.4-367.1 156.9 0 295.5 77 381.2 194.9L915.6 379C845.8 279.5 730.5 214.3 600 214.3c-167.7 0-310.3 107.7-363.3 257.5l491.6 491.6c123.4-43.7 218-148.2 247.6-277.6H771.4V600h300c0 224.5-157 411.9-367.1 459.4z" />
-                        </svg>
-                        <span>Gatsby.js</span>
-                    </a>
-                    <span>.</span>
-                </footer>
-            </FuturaWrapper>
+            </Layout>
         );
     }
 }
@@ -132,14 +119,7 @@ const stripeAnimation = keyframes({
     "100%": { backgroundPosition: `30px 60px` },
 })
 
-const styles = {
-    container: {
-        display: `flex`,
-        flexDirection: `column`,
-        justifyContent: `space-between`,
-        minHeight: `100vh`,
-        backgroundColor: `#2b2b2b`,
-    },
+export const styles = {
     block: {
         display: `flex`,
         flex: `1`,
@@ -148,7 +128,10 @@ const styles = {
         alignItems: `center`,
         backgroundColor: `#2b2b2b`,
         transition: `all ease-in-out .4s`,
-        "@media screen and (max-width: 1199px)": {
+        "@media screen and (max-width: 575px)": {
+            height: `30vh`
+        },
+        "@media screen and (max-width: 1199px) and (min-width: 576px)": {
             height: `50vh`
         },
         "@media screen and (min-width: 1200px)": {
@@ -157,7 +140,9 @@ const styles = {
         "h1": {
             color: `#5f5f5f`,
             transition: `all ease-in-out .4s`,
-            opacity: 0.2
+            opacity: 0.2,
+            margin:`0`,
+            marginTop: `0.85rem`
         },
         "svg": {
             fill: `#5f5f5f`,
@@ -180,76 +165,9 @@ const styles = {
             },
         },
     },
-    footer: {
-        "&":{
-            display: `flex`,
-            flexDirection: `row`,
-            justifyContent: `flex-end`,
-            color: `#5f5f5f`,
-        },
-        "@media screen and (max-width: 575px)": {
-            margin: `0 auto`,
-            width: `100%`,
-            padding: `1.0875rem 1.45rem`,
-            backgroundColor: `#2b2b2b`,
-        },
-        "@media screen and (min-width: 576px)": {
-            position: `absolute`,
-            bottom: `20px`,
-            right: `30px`,
-        },
-    },
-    links: {
-        "@media screen and (max-width: 575px)": {
-            margin: `0 auto`,
-            width: `100%`,
-            padding: `1.0875rem 1.45rem`,
-            display: `flex`,
-            flexDirection: `row`,
-            justifyContent: `flex-start`,
-            backgroundColor: `#2b2b2b`,
-            transition: `all ease-in-out .4s`,
-            color: `#f8f8f8`
-        },
-        "@media screen and (min-width: 576px)": {
-            position: `absolute`,
-            top: `16px`,
-            left: `40px`,
-            color: `#f8f8f8`,
-            zIndex: `99`,
-        },
-        ":hover": {
-            color: `#7f7f7f`
-        }
-    },
     aTag: {
         margin: `0`, 
         padding: `0`, 
         textAlign: `center`,
     },
-    aSvgTag: {
-        margin: `0`,
-        padding: `0`, 
-        display: `flex`,
-        flexDirection: `row`,
-        alignItems: `center`,
-        margin: `0px 2px`,
-        color: `#5f5f5f`,
-        transition: `all ease-in-out .4s`,
-        color: `#a1a1a1`,
-        "svg": {
-            fill: `#5f5f5f`,
-            height: `20px`,
-            marginBottom: `0px`,
-            marginLeft: `3px`,
-            marginRight: `3px`,
-            transition: `all ease-in-out .4s`,
-        },
-        ":hover": {
-            color: `#f8f8f8`,
-            "svg": {
-                fill: `#f8f8f8`,
-            },
-        },
-    }
 }

@@ -1,16 +1,19 @@
 import React from 'react'
 import SEO from "../components/seo"
-import Layout from "../components/layout"
+import { LayoutNormal } from "../components/layout"
+import LoadingPage from "../components/loadingpage"
 
-class NotFound extends React.Component{
-  render(){
-    return(
-      <Layout>
-        <SEO title="404"/>
-        <h1>Page not found.</h1>
-      </Layout>
+class NotFound extends React.Component {
+  render() { 
+    return (
+      <LoadingPage>
+        <LayoutNormal>
+          <SEO title="404" />
+          <h1>Page not found.</h1>
+        </LayoutNormal>
+      </LoadingPage>
     );
   }
 }
-
+ 
 export default NotFound;
