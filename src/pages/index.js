@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx, keyframes } from '@emotion/core'
+import { jsx } from '@emotion/core'
 import React from 'react'
 import SEO from "../components/seo"
 import Blocks  from "../pages/blocks"
