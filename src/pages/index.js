@@ -18,7 +18,7 @@ class App extends React.Component {
             this.setState({
                 isLoaded: true
             })
-        }, 1000)
+        }, 20)
     }
 
     render() { 

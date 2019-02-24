@@ -12,15 +12,15 @@ class Block extends React.Component {
         this.state = {  }
     }
     render() { 
-        return ( 
-            <a href={this.props.href} style={{margin: `0`, padding: `0`}}>
-                <Col xs={24} sm={12} xl={6}>
-                    <div css={styles.block}>
+        return (
+            <Col xs={24} sm={12} xl={6}>
+                <div css={styles.block}>
+                    <a href={this.props.href} css={styles.aTag}>
                         {this.props.children}
                         <h1>{this.props.name}</h1>
-                    </div>
-                </Col>
-            </a>
+                    </a>
+                </div>
+            </Col> 
          );
     }
 }
@@ -29,7 +29,7 @@ class Blocks extends React.Component{
     render() {
         return(
             <FuturaWrapper css={styles.container}>
-                <h1 css={styles.links}>Links.</h1>
+                <a css={styles.aTag} href="/"><h1 css={styles.links}>Links.</h1></a>
                 <Row>
                     <Block name="GitHub" href="https://github.com/keguigong">
                         <svg viewBox="0 0 35.318 35.318">
@@ -163,7 +163,7 @@ const styles = {
             transition: `all ease-in-out .4s`,
         },
         ":hover": {
-            backgroundSize: `60px 60px`,
+            backgroundSize: `30px 30px`,
             backgroundColor: `#2b2b2b`,
             backgroundImage: `linear-gradient(45deg, rgba(0,0,0, 0.1) 25%, transparent 25%, transparent 50%, rgba(0,0,0, 0.1) 50%, rgba(0,0,0, 0.1) 75%, transparent 75%, transparent)`,
             color: `#fff`,
@@ -186,7 +186,8 @@ const styles = {
             display: `flex`,
             flexDirection: `row`,
             justifyContent: `flex-end`,
-            backgroundColor: `#333333`,
+            backgroundColor: `#2b2b2b`,
+            borderTop: `1px solid #4a4a4a`,
             color: `#5f5f5f`,
             "svg": {
                 fill: `#5f5f5f`,
@@ -232,7 +233,8 @@ const styles = {
             display: `flex`,
             flexDirection: `row`,
             justifyContent: `flex-start`,
-            backgroundColor: `#333333`,
+            backgroundColor: `#2b2b2b`,
+            borderBottom: `1px solid #4a4a4a`,
             color: `#5f5f5f`
         },
         "@media screen and (min-width: 576px)": {
@@ -242,5 +244,10 @@ const styles = {
             color: `#f8f8f8`,
             zIndex: `99`,
         },
+    },
+    aTag: {
+        margin: `0`, 
+        padding: `0`, 
+        textAlign: `center`,
     }
 }
