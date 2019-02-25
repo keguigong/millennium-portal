@@ -2,15 +2,16 @@
 import { jsx } from '@emotion/core'
 import React from "react"
 import { Link } from "gatsby"
-import { Col } from "antd"
-
+import { transitions } from "../utils/styles"
+import { colors } from "../utils/presets"
+ 
 // Import Futura PT typeface
 import "../fonts/futurapt_book_macroman/stylesheet.css"
 import "../fonts/futurapt_bookitalic_macroman/stylesheet.css"
 import "../fonts/futurapt_demi_macroman/stylesheet.css"
 import "../fonts/futurapt_demiitalic_macroman/stylesheet.css"
 
-import "./layout.css"
+// import "./layout.css"
 
 export class FuturaWrapper extends React.Component{
   render(){
@@ -23,12 +24,17 @@ export class FuturaWrapper extends React.Component{
 }
 
 class Layout extends React.Component {
+  constructor(props){
+    super(props);
+  }
+
+
   render() { 
     return (
       <div css={styles.container}>
         <header css={styles.header}>
-          <Link css={styles.aTag} to="/"><h1>Links.</h1></Link>
-          <Link css={styles.aTag} to="/about"><h1>About.</h1></Link>
+          <Link css={this.props.index ? styles.linkActive : styles.linkNormal} to="/"><h1>Links.</h1></Link>
+          <Link css={!this.props.index ? styles.linkActive : styles.linkNormal} to="/about"><h1>About.</h1></Link>
         </header>
         <div css={styles.layoutContent}>
           {this.props.children}
@@ -53,7 +59,7 @@ class Layout extends React.Component {
 export class LayoutNormal extends React.Component {
   render() { 
     return ( 
-      <Layout>
+      <Layout index={this.props.index}>
         <div css={styles.LayoutNormalContent}>
           {this.props.children}
         </div>
@@ -73,7 +79,7 @@ export const styles = {
     alignItems: `flex-start`,
     width: `100vw`,
     minHeight: `100vh`,
-    backgroundColor: `#2b2b2b`,
+    backgroundColor: colors.keguigong.dark,
   },
   header: {
     "@media screen and (max-width: 575px)": {
@@ -82,50 +88,91 @@ export const styles = {
       display: `flex`,
       flexDirection: `row`,
       justifyContent: `flex-start`,
-      backgroundColor: `#2b2b2b`,
-      transition: `all ease-in-out .4s`,
-      color: `#f8f8f8`,
+      backgroundColor: colors.keguigong.dark,
+      transition: transitions.default,
+      color: colors.keguigong.white,
     },
     "@media screen and (min-width: 576px)": {
       position: `absolute`,
       top: `1rem`,
       left: `1rem`,
-      color: `#f8f8f8`,
-      zIndex: `99`,
+      color: colors.keguigong.white,
+      zIndex: `1`,
     },
-    "h1": {
-      margin: `0`,
-      display: `inline-block`,
-      padding: `0.85rem 0.85rem`,
-      color: `#f8f8f8`,
-      ":hover": {
-        color: `#7f7f7f`,
-      },
-    }
   },
   footer: {
     "&": {
       display: `flex`,
       flexDirection: `row`,
+      width: `100%`,
       justifyContent: `flex-end`,
-      color: `#5f5f5f`,
+      padding: `1rem 1rem`,
+      color: colors.keguigong.lightGray,
     },
     "@media screen and (max-width: 575px)": {
       margin: `0 auto`,
       width: `100%`,
-      padding: `1.0875rem 1.45rem`,
-      backgroundColor: `#2b2b2b`,
+      backgroundColor: colors.keguigong.dark,
     },
     "@media screen and (min-width: 576px)": {
       position: `absolute`,
-      bottom: `20px`,
-      right: `30px`,
+      bottom: `0rem`,
+      right: `0rem`,
+      "fullscreenMode": {
+        position: `absolute`,
+        bottom: `0rem`,
+        right: `0rem`,
+      }
     },
   },
-  aTag: {
+  link: {
+    display: `inline-block`,
     margin: `0`,
     padding: `0`,
     textAlign: `center`,
+    "h1": {
+      margin: `0`,
+      display: `inline-block`,
+      padding: `0.85rem 0.85rem`,
+      color: colors.keguigong.lightGray,
+      transition: transitions.default,
+    },
+    ":hover, :checked": {
+      "h1": {
+        color: colors.keguigong.white,
+      }
+    },
+  },
+  linkActive: {
+    display: `inline-block`,
+    margin: `0`,
+    padding: `0`,
+    textAlign: `center`,
+    "h1": {
+      margin: `0`,
+      display: `inline-block`,
+      padding: `0.85rem 0.85rem`,
+      color: colors.keguigong.white,
+      transition: transitions.default,
+    },
+  },
+  linkNormal: {
+    display: `inline-block`,
+    margin: `0`,
+    padding: `0`,
+    textAlign: `center`,
+    "h1": {
+      margin: `0`,
+      display: `inline-block`,
+      padding: `0.85rem 0.85rem`,
+      color: colors.keguigong.lightGray,
+      transition: transitions.default,
+    },
+    ":hover": {
+      "h1": {
+        color: colors.keguigong.white,
+      }
+    },
   },
   aSvgTag: {
     margin: `0`,
@@ -134,21 +181,20 @@ export const styles = {
     flexDirection: `row`,
     alignItems: `center`,
     margin: `0px 2px`,
-    color: `#5f5f5f`,
-    transition: `all ease-in-out .4s`,
-    color: `#a1a1a1`,
+    transition: transitions.default,
+    color: colors.keguigong.lightWhite,
     "svg": {
-      fill: `#5f5f5f`,
+      fill: colors.keguigong.lightWhite,
       height: `20px`,
       marginBottom: `0px`,
       marginLeft: `3px`,
       marginRight: `3px`,
-      transition: `all ease-in-out .4s`,
+      transition: transitions.default,
     },
     ":hover": {
-      color: `#f8f8f8`,
+      color: colors.keguigong.white,
       "svg": {
-        fill: `#f8f8f8`,
+        fill: colors.keguigong.white,
       },
     },
   },
@@ -160,14 +206,21 @@ export const styles = {
     "&": {
       maxWidth: `960px`,
       margin: `0 auto`,
-      color: `#f8f8f8`,
+      color: colors.keguigong.white,
       padding: `0.25rem 1rem`,
       "h1": {
-        color: `#f8f8f8`
+        color: colors.keguigong.white
+      },
+      "h2": {
+        color: colors.keguigong.LessWhite,
+        lineHeight: `200%`
       }
     },
     "@media screen and (max-width: 575px)": {
       marginTop: `2rem`,
+    },
+    "@media screen and (max-width: 1199px) and (min-width: 576px)": {
+      padding: `0.25rem 2rem`,
     },
     "@media screen and (min-width: 576px)": {
       marginTop: `6rem`

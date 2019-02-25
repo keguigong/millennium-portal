@@ -1,6 +1,13 @@
 import gray from "gray-percentage"
 
 const colors = {
+  keguigong: {
+    white: `#f8f8f8`,
+    LessWhite: `#e1e1e1`,
+    lightGray: `#5f5f5f`,
+    lightWhite: `#a1a1a1`,
+    dark: `#222222`,
+  },
   // original palette by @SachaG
   // @see https://www.figma.com/file/J6IYJEtdRmwJQOrcZ2DfvxDD/Gatsby
   gatsby: `#663399`, // was #744c9e

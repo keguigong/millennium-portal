@@ -1,12 +1,12 @@
 import React from "react"
 import { graphql } from "gatsby"
 import SEO from "../components/seo"
-import Layout from "../components/layout"
+import { LayoutNormal} from "../components/layout"
 
 export default ({ data }) => {
   console.log(data)
   return (
-    <Layout>
+    <LayoutNormal>
       <SEO title="blogs"/>
       <div>
         <h1>Blogs</h1>
@@ -21,7 +21,7 @@ export default ({ data }) => {
           </div>
         ))}
       </div>
-    </Layout>
+    </LayoutNormal>
   )
 }
 

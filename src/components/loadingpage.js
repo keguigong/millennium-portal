@@ -17,7 +17,7 @@ class LoadingPage extends React.Component {
             this.setState({
                 isLoaded: true
             })
-        }, 500)
+        }, 0)
     }
 
     render() {

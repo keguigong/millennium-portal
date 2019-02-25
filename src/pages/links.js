@@ -1,10 +1,13 @@
 /** @jsx jsx */
 import { jsx, keyframes } from '@emotion/core'
 import React from 'react';
+import SEO from "../components/seo"
 import Layout from "../components/layout"
 import { Row, Col} from "antd"
+import { colors } from "../utils/presets"
+import { transitions } from "../utils/styles"
 
-class Block extends React.Component {
+class LinkBlock extends React.Component {
     constructor(props) {
         super(props);
         this.state = {  }
@@ -23,12 +26,13 @@ class Block extends React.Component {
     }
 }
 
-class Blocks extends React.Component{
+class LinksPage extends React.Component{
     render() {
         return(
-            <Layout css={styles.container}>
-                <Row>
-                    <Block name="GitHub" href="https://github.com/keguigong">
+            <Layout css={styles.container} index="true">
+                <SEO title="links"/>
+                <Row css={styles.row}>
+                    <LinkBlock name="GitHub" href="https://github.com/keguigong">
                         <svg viewBox="0 0 35.318 35.318">
                             <path d="M23.71,34.689c-0.172,0.062-0.345,0.137-0.522,0.168c-0.678,0.121-1.112-0.229-1.116-0.922
                                 c-0.009-1.287-0.009-2.572,0.012-3.859c0.022-1.48-0.012-2.941-1.139-4.162c0.67-0.12,1.266-0.204,1.849-0.338
@@ -51,8 +55,8 @@ class Blocks extends React.Component{
                                 C13.061,29.004,12.944,28.836,12.87,28.854z M8.512,28.261c0.082,0.155,0.209,0.289,0.381,0.508
                                 c0.115-0.188,0.24-0.332,0.218-0.361c-0.109-0.143-0.257-0.26-0.403-0.367C8.698,28.033,8.495,28.227,8.512,28.261z"/>
                         </svg>
-                    </Block>
-                    <Block name="instagram" href="https://instagram.com/keguigong">
+                    </LinkBlock>
+                    <LinkBlock name="instagram" href="https://instagram.com/keguigong">
                         <svg viewBox="0 0 512 512">
                             <path d="M352,0H160C71.648,0,0,71.648,0,160v192c0,88.352,71.648,160,160,160h192c88.352,0,160-71.648,160-160V160
                                 C512,71.648,440.352,0,352,0z M464,352c0,61.76-50.24,112-112,112H160c-61.76,0-112-50.24-112-112V160C48,98.24,98.24,48,160,48
@@ -61,13 +65,33 @@ class Blocks extends React.Component{
                                 c-44.096,0-80-35.904-80-80c0-44.128,35.904-80,80-80s80,35.872,80,80C336,300.096,300.096,336,256,336z"/>
                             <circle cx="393.6" cy="118.4" r="17.056"/>
                         </svg>
-                    </Block>
-                    <Block name="steam" href="https://steamcommunity.com/id/keguigong">
+                    </LinkBlock>
+                    <LinkBlock name="behance" href="https://behance.net/keguigong">
+                        <svg viewBox="0 0 511.958 511.958">
+                            <path d="M210.624,240.619c10.624-5.344,18.656-11.296,24.16-17.728c9.792-11.584,14.624-26.944,14.624-45.984
+                                        c0-18.528-4.832-34.368-14.496-47.648c-16.128-21.632-43.424-32.704-82.016-33.28H0v312.096h142.56
+                                        c16.064,0,30.944-1.376,44.704-4.192c13.76-2.848,25.664-8.064,35.744-15.68c8.96-6.624,16.448-14.848,22.4-24.544
+                                        c9.408-14.656,14.112-31.264,14.112-49.76c0-17.92-4.128-33.184-12.32-45.728C238.912,255.627,226.752,246.443,210.624,240.619z
+                                        M63.072,150.187h68.864c15.136,0,27.616,1.632,37.408,4.864c11.328,4.704,16.992,14.272,16.992,28.864
+                                        c0,13.088-4.32,22.24-12.864,27.392c-8.608,5.152-19.776,7.744-33.472,7.744H63.072V150.187z M171.968,348.427
+                                        c-7.616,3.68-18.336,5.504-32.064,5.504H63.072v-83.232h77.888c13.568,0.096,24.128,1.888,31.68,5.248
+                                        c13.44,6.08,20.128,17.216,20.128,33.504C192.768,328.651,185.856,341.579,171.968,348.427z"/>
+                            <rect width="135.584" height="38.848" x="327.168" y="110.539"/>
+                            <path d="M509.856,263.851c-2.816-18.08-9.024-33.984-18.688-47.712c-10.592-15.552-24.032-26.944-40.384-34.144
+                                        c-16.288-7.232-34.624-10.848-55.04-10.816c-34.272,0-62.112,10.72-83.648,32c-21.472,21.344-32.224,52.032-32.224,92.032
+                                        c0,42.656,11.872,73.472,35.744,92.384c23.776,18.944,51.232,28.384,82.4,28.384c37.728,0,67.072-11.232,88.032-33.632
+                                        c13.408-14.144,20.992-28.064,22.656-41.728H446.24c-3.616,6.752-7.808,12.032-12.608,15.872
+                                        c-8.704,7.04-20.032,10.56-33.92,10.56c-13.216,0-24.416-2.912-33.76-8.704c-15.424-9.28-23.488-25.536-24.512-48.672h170.464
+                                        C512.16,289.739,511.52,274.411,509.856,263.851z M342.976,269.835c2.24-15.008,7.68-26.912,16.32-35.712
+                                        c8.64-8.768,20.864-13.184,36.512-13.216c14.432,0,26.496,4.128,36.32,12.416c9.696,8.352,15.168,20.48,16.288,36.512H342.976z"/>
+                        </svg>
+                    </LinkBlock>
+                    {/* <LinkBlock name="steam" href="https://steamcommunity.com/id/keguigong">
                         <svg viewBox="0 0 256 259">
                             <path d="M127.779 0C60.42 0 5.24 52.412 0 119.014l68.724 28.674a35.812 35.812 0 0 1 20.426-6.366c.682 0 1.356.019 2.02.056l30.566-44.71v-.626c0-26.903 21.69-48.796 48.353-48.796 26.662 0 48.352 21.893 48.352 48.796 0 26.902-21.69 48.804-48.352 48.804-.37 0-.73-.009-1.098-.018l-43.593 31.377c.028.582.046 1.163.046 1.735 0 20.204-16.283 36.636-36.294 36.636-17.566 0-32.263-12.658-35.584-29.412L4.41 164.654c15.223 54.313 64.673 94.132 123.369 94.132 70.818 0 128.221-57.938 128.221-129.393C256 57.93 198.597 0 127.779 0zM80.352 196.332l-15.749-6.568c2.787 5.867 7.621 10.775 14.033 13.47 13.857 5.83 29.836-.803 35.612-14.799a27.555 27.555 0 0 0 .046-21.035c-2.768-6.79-7.999-12.086-14.706-14.909-6.67-2.795-13.811-2.694-20.085-.304l16.275 6.79c10.222 4.3 15.056 16.145 10.794 26.46-4.253 10.314-15.998 15.195-26.22 10.895zm121.957-100.29c0-17.925-14.457-32.52-32.217-32.52-17.769 0-32.226 14.595-32.226 32.52 0 17.926 14.457 32.512 32.226 32.512 17.76 0 32.217-14.586 32.217-32.512zm-56.37-.055c0-13.488 10.84-24.42 24.2-24.42 13.368 0 24.208 10.932 24.208 24.42 0 13.488-10.84 24.421-24.209 24.421-13.359 0-24.2-10.933-24.2-24.42z" />
                         </svg>
-                    </Block>
-                    <Block name="Weibo" href="https://weibo.com/keguigong">
+                    </LinkBlock> */}
+                    <LinkBlock name="Weibo" href="https://weibo.com/keguigong">
                         <svg viewBox="0 0 511.794 511.795">
                             <path d="M413.691,261.553c-8.747-5.522-18.555-9.995-29.403-13.42c-2.286-0.765-3.907-1.333-4.859-1.715
                                 c-0.951-0.381-2.098-1.093-3.425-2.141c-1.335-1.049-1.767-2.24-1.284-3.571c0.479-1.332,0.903-3.234,1.284-5.708
@@ -105,14 +129,14 @@ class Blocks extends React.Component{
                                 c-1.52,5.142-1.047,10.09,1.431,14.849c2.471,4.758,6.276,7.992,11.416,9.707c5.141,1.709,10.089,1.331,14.846-1.143
                                 c4.76-2.474,7.997-6.28,9.712-11.42C512.486,203.981,513.769,180.997,508.917,156.918z"/>
                         </svg>
-                    </Block>
+                    </LinkBlock>
                 </Row>
             </Layout>
         );
     }
 }
 
-export default Blocks;
+export default LinksPage;
 
 const stripeAnimation = keyframes({
     "0%": { backgroundPosition: `0 0` },
@@ -126,8 +150,8 @@ export const styles = {
         flexDirection: `column`,
         justifyContent: `center`,
         alignItems: `center`,
-        backgroundColor: `#2b2b2b`,
-        transition: `all ease-in-out .4s`,
+        backgroundColor: colors.keguigong.dark,
+        transition: transitions.default,
         "@media screen and (max-width: 575px)": {
             height: `30vh`
         },
@@ -138,29 +162,29 @@ export const styles = {
             height: `100vh`
         },
         "h1": {
-            color: `#5f5f5f`,
-            transition: `all ease-in-out .4s`,
+            color: colors.keguigong.lightGray,
+            transition: transitions.default,
             opacity: 0.2,
             margin:`0`,
             marginTop: `0.85rem`
         },
         "svg": {
-            fill: `#5f5f5f`,
+            fill: colors.keguigong.lightGray,
             height: `3rem`,
-            transition: `all ease-in-out .4s`,
+            transition: transitions.default,
         },
         ":hover": {
             backgroundSize: `30px 30px`,
-            backgroundColor: `#2b2b2b`,
+            backgroundColor: colors.keguigong.dark,
             backgroundImage: `linear-gradient(45deg, rgba(0,0,0, 0.1) 25%, transparent 25%, transparent 50%, rgba(0,0,0, 0.1) 50%, rgba(0,0,0, 0.1) 75%, transparent 75%, transparent)`,
             color: `#fff`,
             animation: `${stripeAnimation} 2s linear infinite`,
             "h1": {
-                color: `#f8f8f8`,
+                color: colors.keguigong.white,
                 opacity: 1
             },
             "svg": {
-                fill: `#f8f8f8`,
+                fill: colors.keguigong.white,
                 height: `3rem`,
             },
         },
@@ -170,4 +194,7 @@ export const styles = {
         padding: `0`, 
         textAlign: `center`,
     },
+    row: {
+        overflowX: `auto`,
+    }
 }

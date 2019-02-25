@@ -1,14 +1,12 @@
 import React from 'react'
-import SEO from "../components/seo"
-import Blocks  from "../pages/blocks"
+import LinksPage  from "./links"
 import LoadingPage from "../components/loadingpage"
 
 class App extends React.Component {
     render() { 
         return (
             <LoadingPage>
-                <SEO/>
-                <Blocks/>
+                <LinksPage/>
             </LoadingPage>
         );
     }

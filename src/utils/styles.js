@@ -1,15 +1,14 @@
-import hex2rgba from "hex2rgba"
-import { keyframes } from "@emotion/core"
 /** @jsx jsx */
 import { jsx } from '@emotion/core'
-
+import hex2rgba from "hex2rgba"
+import { keyframes } from "@emotion/core"
 import presets, { colors } from "./presets"
 import { rhythm, scale, options } from "./typography"
 
 const stripeAnimation = keyframes({
   "0%": { backgroundPosition: `0 0` },
-  "100%": { backgroundPosition: `30px 60px` },
-})
+  "100%": { backgroundPosition: `30px 30px` },
+});
 
 export const scrollbarStyles = {
   WebkitOverflowScrolling: `touch`,
@@ -138,4 +137,8 @@ export const svgStyles = {
       fill: `url(#accent-white-top)`,
     },
   },
+}
+
+export const transitions = {
+  default: `all ease-in-out .4s`
 }
