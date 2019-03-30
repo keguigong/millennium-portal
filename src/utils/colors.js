@@ -8,6 +8,28 @@ const colors = {
     lightWhite: `#a1a1a1`,
     dark: `#222222`,
   },
+  nio: {
+    greyLighten3: `#F7F7F8`,
+    grayLighten2: `#F0F1F2`,
+    grayLighten1: `#CDCED4`,
+    gray: `#9B9DA9`,
+    grayDarken1: `#696D7F`,
+    grayDarken2: `#363C54`,
+    grayDarken3: `#2B2B2B`,
+    white: `#ffffff`,
+    black: `#000000`,
+    red: `#EF7575`,
+    redLighten1: `#FF5A53`,
+    redLighten2: `#FF772F`,
+    redDarken1: `#E83131`,
+    orange: `#FFCE27`,
+    green: `#24BD4C`,
+    teal: `#00BEBE`,
+    tealLighten1: `#B7E8EB`,
+    tealLighten2: `#E7F4F8`,
+    blue: `#4BACF1`,
+    blueLighten1: `#70B7E9`
+  },
   // original palette by @SachaG
   // @see https://www.figma.com/file/J6IYJEtdRmwJQOrcZ2DfvxDD/Gatsby
   gatsby: `#663399`, // was #744c9e

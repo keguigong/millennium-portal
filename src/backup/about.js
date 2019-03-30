@@ -1,7 +1,6 @@
 import React from 'react'
 import SEO from "../components/seo"
-import { LayoutNormal } from "../components/layout"
-import LoadingPage from "../components/loadingpage"
+import { LayoutNormal } from "./layout"
 
 class About extends React.Component {
     constructor(props) {
@@ -10,7 +9,7 @@ class About extends React.Component {
     }
     render() { 
         return ( 
-            <LoadingPage>
+            <div>
                 <SEO title="about"/>
                 <LayoutNormal>
                     <h1>Hello,</h1>
@@ -19,7 +18,7 @@ class About extends React.Component {
                     <h1>Also,</h1>
                     <h2>beginner of React, on the way learning it.</h2>
                 </LayoutNormal>
-            </LoadingPage>
+            </div>
          );
     }
 }

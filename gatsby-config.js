@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
     title: `keguigong`,
-    description: `@keguigong(可圭共)'s personal page.`,
+    description: `@keguigong(可圭共)'s page.`,
     author: `@keguigong`,
   },
   plugins: [
@@ -32,7 +32,7 @@ module.exports = {
         background_color: `#ffffff`,
         theme_color: `#2b2b2b`,
         // define favicon
-        icon: `src/images/cross.png`, // This path is relative to the root of the site.
+        icon: `src/images/pig.png`, // This path is relative to the root of the site.
       },
     },
     // add gatsby-plugin-typography path

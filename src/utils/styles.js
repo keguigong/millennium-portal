@@ -7,7 +7,7 @@ import { rhythm, scale, options } from "./typography"
 
 const stripeAnimation = keyframes({
   "0%": { backgroundPosition: `0 0` },
-  "100%": { backgroundPosition: `30px 30px` },
+  "100%": { backgroundPosition: `30px 60px` },
 });
 
 export const scrollbarStyles = {
@@ -53,9 +53,9 @@ export const buttonStyles = {
     ":hover, &:focus": {
       backgroundSize: `30px 30px`,
       backgroundColor: colors.gatsby,
-      backgroundImage: `linear-gradient(45deg, rgba(0,0,0, 0.1) 25%, transparent 25%, transparent 50%, rgba(0,0,0, 0.1) 50%, rgba(0,0,0, 0.1) 75%, transparent 75%, transparent)`,
+      backgroundImage: `linear-gradient(45deg, #ffffff50 25%, transparent 25%, transparent 50%, #ffffff50 50%, #ffffff50 75%, transparent 75%, transparent)`,
       color: `#fff`,
-      animation: `${stripeAnimation} 2.8s linear infinite`,
+      animation: `${stripeAnimation} 2s linear infinite`,
     },
     ":focus": {
       outline: 0,
@@ -109,6 +109,13 @@ export const buttonStyles = {
     },
   },
   ondark: { border: `1px solid ${colors.ui.light}` },
+  redBtn: {
+    backgroundColor: colors.nio.red,
+    borderColor: colors.nio.red,
+    ":hover": {
+      backgroundColor: colors.nio.red,
+    },
+  }
 }
 
 export const svgStyles = {
@@ -140,5 +147,6 @@ export const svgStyles = {
 }
 
 export const transitions = {
-  default: `all ease-in-out .4s`
+  default: `all ease-out .4s`,
+  slow: `all ease-out .6s`,
 }

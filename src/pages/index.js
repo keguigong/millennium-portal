@@ -1,15 +1,12 @@
 import React from 'react'
-import LinksPage  from "./links"
-import LoadingPage from "../components/loadingpage"
+import LinksPage from "./links"
 
 class App extends React.Component {
-    render() { 
+    render() {
         return (
-            <LoadingPage>
-                <LinksPage/>
-            </LoadingPage>
+            <LinksPage />
         );
     }
 }
- 
+
 export default App;

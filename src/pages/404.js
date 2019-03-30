@@ -1,19 +1,19 @@
 import React from 'react'
 import SEO from "../components/seo"
-import { LayoutNormal } from "../components/layout"
-import LoadingPage from "../components/loadingpage"
+import { LayoutB } from "../components/layout"
+import Button from "../components/button"
 
 class NotFound extends React.Component {
-  render() { 
+  render() {
     return (
-      <LoadingPage>
-        <LayoutNormal>
-          <SEO title="404" />
-          <h1>Page not found.</h1>
-        </LayoutNormal>
-      </LoadingPage>
+      <LayoutB>
+        <SEO title="404" />
+        <h1>404</h1>
+        <h4>Page not found.</h4>
+        <Button redBtn to="/">Back to home</Button>
+      </LayoutB>
     );
   }
 }
- 
+
 export default NotFound;

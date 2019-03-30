@@ -5,6 +5,7 @@ import presets, { colors } from "./presets"
 const headerFontFamily = [
     `Futura PT`,
     `-apple-system`,
+    `Arial`,
     `BlinkMacSystemFont`,
     `Segoe UI`,
     `Roboto`,
@@ -14,7 +15,6 @@ const headerFontFamily = [
     `Fira Sans`,
     `Droid Sans`,
     `Helvetica Neue`,
-    `Arial`,
     `sans-serif`,
 ]
 
@@ -22,6 +22,7 @@ const _options = {
     headerFontFamily,
     bodyFontFamily: [
         `Futura PT`,
+        `Arial`,
         `Spectral`, 
         `Georgia`, 
         `Times New Roman`, 
@@ -39,6 +40,7 @@ const _options = {
     ],
     systemFontFamily: [
         `-apple-system`,
+        `Arial`,
         `BlinkMacSystemFont`,
         `Segoe UI`,
         `Roboto`,
@@ -48,7 +50,6 @@ const _options = {
         `Fira Sans`,
         `Droid Sans`,
         `Helvetica Neue`,
-        `Arial`,
         `sans-serif`,
     ],
     baseLineHeight: 1.4,
@@ -349,12 +350,12 @@ const _options = {
             },
             [presets.Mobile]: {
                 html: {
-                    fontSize: `${(17 / 16) * 100}%`,
+                    fontSize: `${(14 / 16) * 100}%`,
                 },
             },
             [presets.Tablet]: {
                 html: {
-                    fontSize: `${(18 / 16) * 100}%`,
+                    fontSize: `${(16 / 16) * 100}%`,
                 },
             },
             [presets.Desktop]: {
@@ -383,7 +384,7 @@ const _options = {
             },
             [presets.VVHd]: {
                 html: {
-                    fontSize: `${(21 / 16) * 100}%`,
+                    fontSize: `${(18 / 16) * 100}%`,
                 },
             },
             // PrismJS syntax highlighting token styles

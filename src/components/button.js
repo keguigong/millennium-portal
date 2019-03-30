@@ -21,6 +21,7 @@ const Button = ({
   tiny,
   secondary,
   ondark,
+  redBtn,
   ...rest
 }) => {
   const Tag = components[tag || `link`]
@@ -40,6 +41,7 @@ const Button = ({
       ...(small && buttonStyles.small),
       ...(tiny && buttonStyles.tiny),
       ...(ondark && buttonStyles.ondark),
+      ...(redBtn && buttonStyles.redBtn),
     },
   }
 

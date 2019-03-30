@@ -1,38 +1,30 @@
 /** @jsx jsx */
 import { jsx, keyframes } from '@emotion/core'
-import React from 'react';
+import React from "react"
 import SEO from "../components/seo"
-import Layout from "../components/layout"
-import { Row, Col} from "antd"
-import { colors } from "../utils/presets"
 import { transitions } from "../utils/styles"
+import presents, { colors } from "../utils/presets"
+import { LayoutA } from "../components/layout"
 
 class LinkBlock extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {  }
-    }
-    render() { 
-        return (
-            <Col xs={24} sm={12} xl={6}>
-                <div css={styles.block}>
-                    <a href={this.props.href} css={styles.aTag}>
-                        {this.props.children}
-                        <h1>{this.props.name}</h1>
-                    </a>
-                </div>
-            </Col> 
-         );
+    render(){
+        return(
+            <div css={styles.block}>
+                <a href={this.props.href}>
+                    {this.props.children}
+                    <h1>{this.props.name}</h1>
+                </a>
+            </div>
+        )
     }
 }
 
-class LinksPage extends React.Component{
+class LinksPage extends React.Component {
     render() {
-        return(
-            <Layout css={styles.container} index="true">
-                <SEO title="links"/>
-                <Row css={styles.row}>
-                    <LinkBlock name="GitHub" href="https://github.com/keguigong">
+        return (
+            <LayoutA>
+                <SEO title="links" />
+                <LinkBlock name="GitHub" href="https://github.com/keguigong">
                         <svg viewBox="0 0 35.318 35.318">
                             <path d="M23.71,34.689c-0.172,0.062-0.345,0.137-0.522,0.168c-0.678,0.121-1.112-0.229-1.116-0.922
                                 c-0.009-1.287-0.009-2.572,0.012-3.859c0.022-1.48-0.012-2.941-1.139-4.162c0.67-0.12,1.266-0.204,1.849-0.338
@@ -55,8 +47,8 @@ class LinksPage extends React.Component{
                                 C13.061,29.004,12.944,28.836,12.87,28.854z M8.512,28.261c0.082,0.155,0.209,0.289,0.381,0.508
                                 c0.115-0.188,0.24-0.332,0.218-0.361c-0.109-0.143-0.257-0.26-0.403-0.367C8.698,28.033,8.495,28.227,8.512,28.261z"/>
                         </svg>
-                    </LinkBlock>
-                    <LinkBlock name="instagram" href="https://instagram.com/keguigong">
+                </LinkBlock>
+                <LinkBlock name="instagram" href="https://instagram.com/keguigong">
                         <svg viewBox="0 0 512 512">
                             <path d="M352,0H160C71.648,0,0,71.648,0,160v192c0,88.352,71.648,160,160,160h192c88.352,0,160-71.648,160-160V160
                                 C512,71.648,440.352,0,352,0z M464,352c0,61.76-50.24,112-112,112H160c-61.76,0-112-50.24-112-112V160C48,98.24,98.24,48,160,48
@@ -65,8 +57,8 @@ class LinksPage extends React.Component{
                                 c-44.096,0-80-35.904-80-80c0-44.128,35.904-80,80-80s80,35.872,80,80C336,300.096,300.096,336,256,336z"/>
                             <circle cx="393.6" cy="118.4" r="17.056"/>
                         </svg>
-                    </LinkBlock>
-                    <LinkBlock name="behance" href="https://behance.net/keguigong">
+                </LinkBlock>
+                <LinkBlock name="behance" href="https://behance.net/keguigong">
                         <svg viewBox="0 0 511.958 511.958">
                             <path d="M210.624,240.619c10.624-5.344,18.656-11.296,24.16-17.728c9.792-11.584,14.624-26.944,14.624-45.984
                                         c0-18.528-4.832-34.368-14.496-47.648c-16.128-21.632-43.424-32.704-82.016-33.28H0v312.096h142.56
@@ -85,13 +77,8 @@ class LinksPage extends React.Component{
                                         C512.16,289.739,511.52,274.411,509.856,263.851z M342.976,269.835c2.24-15.008,7.68-26.912,16.32-35.712
                                         c8.64-8.768,20.864-13.184,36.512-13.216c14.432,0,26.496,4.128,36.32,12.416c9.696,8.352,15.168,20.48,16.288,36.512H342.976z"/>
                         </svg>
-                    </LinkBlock>
-                    {/* <LinkBlock name="steam" href="https://steamcommunity.com/id/keguigong">
-                        <svg viewBox="0 0 256 259">
-                            <path d="M127.779 0C60.42 0 5.24 52.412 0 119.014l68.724 28.674a35.812 35.812 0 0 1 20.426-6.366c.682 0 1.356.019 2.02.056l30.566-44.71v-.626c0-26.903 21.69-48.796 48.353-48.796 26.662 0 48.352 21.893 48.352 48.796 0 26.902-21.69 48.804-48.352 48.804-.37 0-.73-.009-1.098-.018l-43.593 31.377c.028.582.046 1.163.046 1.735 0 20.204-16.283 36.636-36.294 36.636-17.566 0-32.263-12.658-35.584-29.412L4.41 164.654c15.223 54.313 64.673 94.132 123.369 94.132 70.818 0 128.221-57.938 128.221-129.393C256 57.93 198.597 0 127.779 0zM80.352 196.332l-15.749-6.568c2.787 5.867 7.621 10.775 14.033 13.47 13.857 5.83 29.836-.803 35.612-14.799a27.555 27.555 0 0 0 .046-21.035c-2.768-6.79-7.999-12.086-14.706-14.909-6.67-2.795-13.811-2.694-20.085-.304l16.275 6.79c10.222 4.3 15.056 16.145 10.794 26.46-4.253 10.314-15.998 15.195-26.22 10.895zm121.957-100.29c0-17.925-14.457-32.52-32.217-32.52-17.769 0-32.226 14.595-32.226 32.52 0 17.926 14.457 32.512 32.226 32.512 17.76 0 32.217-14.586 32.217-32.512zm-56.37-.055c0-13.488 10.84-24.42 24.2-24.42 13.368 0 24.208 10.932 24.208 24.42 0 13.488-10.84 24.421-24.209 24.421-13.359 0-24.2-10.933-24.2-24.42z" />
-                        </svg>
-                    </LinkBlock> */}
-                    <LinkBlock name="Weibo" href="https://weibo.com/keguigong">
+                </LinkBlock>
+                <LinkBlock name="Weibo" href="https://weibo.com/keguigong">
                         <svg viewBox="0 0 511.794 511.795">
                             <path d="M413.691,261.553c-8.747-5.522-18.555-9.995-29.403-13.42c-2.286-0.765-3.907-1.333-4.859-1.715
                                 c-0.951-0.381-2.098-1.093-3.425-2.141c-1.335-1.049-1.767-2.24-1.284-3.571c0.479-1.332,0.903-3.234,1.284-5.708
@@ -129,72 +116,78 @@ class LinksPage extends React.Component{
                                 c-1.52,5.142-1.047,10.09,1.431,14.849c2.471,4.758,6.276,7.992,11.416,9.707c5.141,1.709,10.089,1.331,14.846-1.143
                                 c4.76-2.474,7.997-6.28,9.712-11.42C512.486,203.981,513.769,180.997,508.917,156.918z"/>
                         </svg>
-                    </LinkBlock>
-                </Row>
-            </Layout>
+                </LinkBlock>
+            </LayoutA>
         );
     }
 }
-
+ 
 export default LinksPage;
 
 const stripeAnimation = keyframes({
     "0%": { backgroundPosition: `0 0` },
-    "100%": { backgroundPosition: `30px 60px` },
+    "100%": { backgroundPosition: `0 -50px` },
 })
 
-export const styles = {
+const styles = {
     block: {
-        display: `flex`,
-        flex: `1`,
+        display: `inline-flex`,
         flexDirection: `column`,
         justifyContent: `center`,
         alignItems: `center`,
-        backgroundColor: colors.keguigong.dark,
+        // backgroundColor: `#EF7575`,
         transition: transitions.default,
-        "@media screen and (max-width: 575px)": {
-            height: `30vh`
+        [presents.Small]: {
+            width: `100%`,
+            height: `40vh`,
         },
-        "@media screen and (max-width: 1199px) and (min-width: 576px)": {
-            height: `50vh`
+        [presents.Mobile]: {
+            width: `100%`,
+            height: `40vh`
         },
-        "@media screen and (min-width: 1200px)": {
-            height: `100vh`
+        [presents.Tablet]: {
+            height: `50vh`,
+            width: `50%`,
+        },
+        [presents.Desktop]: {
+            height: `100vh`,
+            width: `25%`,
+        },
+        "a": {
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            padding: '1rem',
         },
         "h1": {
-            color: colors.keguigong.lightGray,
+            color: colors.nio.gray,
             transition: transitions.default,
-            opacity: 0.2,
-            margin:`0`,
-            marginTop: `0.85rem`
+            opacity: 0,
+            margin: `0`,
+            marginTop: `1rem`
         },
         "svg": {
-            fill: colors.keguigong.lightGray,
+            position: 'relative',
+            top: '1rem',
+            fill: colors.nio.grayDarken2,
             height: `3rem`,
             transition: transitions.default,
         },
         ":hover": {
-            backgroundSize: `30px 30px`,
-            backgroundColor: colors.keguigong.dark,
-            backgroundImage: `linear-gradient(45deg, rgba(0,0,0, 0.1) 25%, transparent 25%, transparent 50%, rgba(0,0,0, 0.1) 50%, rgba(0,0,0, 0.1) 75%, transparent 75%, transparent)`,
-            color: `#fff`,
+            backgroundSize: `50px 50px`,
+            backgroundColor: colors.nio.red,
+            backgroundImage: `linear-gradient(45deg, #ffffff50, 25%, transparent, 25%, transparent, 50%, #ffffff50, 50%, #ffffff50, 75%, transparent, 75%, transparent)`,
             animation: `${stripeAnimation} 2s linear infinite`,
             "h1": {
-                color: colors.keguigong.white,
-                opacity: 1
+                color: colors.nio.white,
+                opacity: 1,
+                transform: 'translateY(-1rem)',
             },
             "svg": {
-                fill: colors.keguigong.white,
+                fill: colors.nio.white,
                 height: `3rem`,
+                transform: 'translateY(-1rem)',
             },
         },
     },
-    aTag: {
-        margin: `0`, 
-        padding: `0`, 
-        textAlign: `center`,
-    },
-    row: {
-        overflowX: `auto`,
-    }
 }
