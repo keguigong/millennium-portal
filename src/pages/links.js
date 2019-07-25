@@ -23,7 +23,7 @@ class LinksPage extends React.Component {
     render() {
         return (
             <LayoutA>
-                <SEO title="links" />
+                <SEO title="links"/>
                 <LinkBlock name="GitHub" href="https://github.com/keguigong">
                         <svg viewBox="0 0 35.318 35.318">
                             <path d="M23.71,34.689c-0.172,0.062-0.345,0.137-0.522,0.168c-0.678,0.121-1.112-0.229-1.116-0.922
