@@ -12,7 +12,7 @@ const Main = ({
   minHeight: [400, 500, 600],
   maxHeight: [600, 700, 800],
   height: 'calc(100vh - 200px)',
-  backgroundImage: `url(${backgroundImages.landing})`,
+  background: t => `url(${companyText.landingImg}) ${t.colors.deep}`,
   backgroundSize: 'cover'
 }}>
   <div sx={{
