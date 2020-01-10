@@ -1,56 +1,150 @@
 /** @jsx jsx */
-import { jsx } from '@emotion/core'
-import React from "react"
-import { Link } from "gatsby"
-import { buttonStyles } from "../utils/styles"
+import { jsx } from 'theme-ui'
+import Link from 'gatsby'
+import PropTypes from 'prop-types'
+
+import { buttonStyles } from '../utils/styles'
+import { Icon } from '../icon/icon-wrapper'
 
 const components = {
-  link: Link,
-  href: ({ children, ...rest }) => <a {...rest}>{children}</a>,
-  button: ({ children, ...rest }) => <button {...rest}>{children}</button>,
+  link: ({ children, href, as, aCSS, isDisabled, target, dispatch, ...rest }) =>
+    <Link {...{ href, as }}>
+      <a sx={aCSS} {...{ target }}>
+        <button disabled={isDisabled} {...rest}>
+          {children}
+        </button>
+      </a>
+    </Link>,
+  href: ({ children, href, as, aCSS, isDisabled, target, dispatch, ...rest }) =>
+    <a {...{ href, target }} sx={aCSS}>
+      <button disabled={isDisabled} {...rest}>
+        {children}
+      </button>
+    </a>,
+  button: ({ children, href, as, aCSS, isDisabled, target, dispatch, ...rest }) =>
+    <button disabled={isDisabled} {...rest}>
+      {children}
+    </button>,
 }
 
 const Button = ({
-  to,
-  overrideCSS,
+  href,
+  as,
+  target,
   icon,
+  arrow,
   children,
   tag,
-  large,
-  small,
-  tiny,
+  primary,
+  link,
   secondary,
-  ondark,
-  redBtn,
+  action,
+  small,
+  large,
+  xlarge,
+  white,
+  aCSS,
+  isSelected,
+  isDisabled,
+  tracking,
+  variant,
+  onClick,
+  overrideCSS,
   ...rest
 }) => {
-  const Tag = components[tag || `link`]
+  const Tag = components[tag || 'button']
 
   const props = {
-    to: !tag ? to : undefined,
-    href: tag === `href` ? to : undefined,
+    aCSS: {
+      display: 'inline-block',
+      ...aCSS,
+    },
+    isDisabled: isDisabled || false,
+    href: href,
+    as: as,
+    target: target,
+    onClick,
     ...rest,
   }
 
-  const hhh = {
-    "&&": {
-      ...buttonStyles.default,
-      ...overrideCSS,
-      ...(secondary && buttonStyles.secondary),
-      ...(large && buttonStyles.large),
-      ...(small && buttonStyles.small),
-      ...(tiny && buttonStyles.tiny),
-      ...(ondark && buttonStyles.ondark),
-      ...(redBtn && buttonStyles.redBtn),
-    },
+  const iconName = arrow ? 'ArrowGo' : icon
+
+  const trackingOnClick = e => {
+    if (typeof props.onClick === 'function') {
+      props.onClick(e)
+    }
   }
 
   return (
-    <Tag {...props} css={hhh}>
+    <Tag
+      {...props}
+      onClick={trackingOnClick}
+      sx={{
+        ...buttonStyles(arrow).default,
+        ...(primary && buttonStyles().primary),
+        ...(secondary && buttonStyles().secondary),
+        ...(link && buttonStyles().link),
+        ...(small && buttonStyles().small),
+        ...(large && buttonStyles().large),
+        ...(xlarge && buttonStyles().xlarge),
+        ...(white && buttonStyles().white),
+        ...(action && buttonStyles().action),
+        ...(isSelected && buttonStyles().isSelected),
+        variant: variant,
+        ...overrideCSS,
+      }}
+    >
       {children}
-      {icon && <>{icon}</>}
+      {iconName && !link && <Icon name={iconName} />}
     </Tag>
   )
+}
+
+Button.propTypes = {
+  href: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.object
+  ]),
+  as: PropTypes.string,
+  target: PropTypes.string,
+  icon: PropTypes.string,
+  arrow: PropTypes.bool,
+  tag: PropTypes.string,
+  primary: PropTypes.bool,
+  link: PropTypes.bool,
+  secondary: PropTypes.bool,
+  small: PropTypes.bool,
+  large: PropTypes.bool,
+  xlarge: PropTypes.bool,
+  aCSS: PropTypes.object,
+  isSelected: PropTypes.bool,
+  isDisabled: PropTypes.bool,
+  tracking: PropTypes.string,
+  variant: PropTypes.string,
+  onClick: PropTypes.func,
+  overrideCSS: PropTypes.object,
+}
+
+Button.defaultProps = {
+  href: '',
+  as: '',
+  target: '',
+  icon: '',
+  arrow: false,
+  tag: '',
+  primary: false,
+  link: false,
+  secondary: false,
+  small: false,
+  large: false,
+  xlarge: false,
+  aCSS: {},
+  isSelected: false,
+  isDisabled: false,
+  tracking: '',
+  variant: '',
+  onClick: f => f,
+  overrideCSS: {},
 }
 
 export default Button

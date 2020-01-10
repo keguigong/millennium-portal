@@ -1,152 +1,134 @@
-/** @jsx jsx */
-import { jsx } from '@emotion/core'
-import hex2rgba from "hex2rgba"
-import { keyframes } from "@emotion/core"
-import presets, { colors } from "./presets"
-import { rhythm, scale, options } from "./typography"
+import { keyframes } from '@emotion/core'
+import { lighten, darken } from '@theme-ui/color'
+import hex2rgba from 'hex2rgba'
+
+export const focusStyle = {
+  outline: 0,
+  boxShadow: t => `0 0 0px 3px ${t.colors.active}`,
+}
+
+export const textOverflow = {
+  textOverflow: 'ellipsis',
+  whiteSpace: 'nowrap',
+  overflow: 'hidden'
+}
 
 const stripeAnimation = keyframes({
-  "0%": { backgroundPosition: `0 0` },
-  "100%": { backgroundPosition: `30px 60px` },
-});
+  '0%': { backgroundPosition: '0 0' },
+  '100%': { backgroundPosition: '30px 0px' },
+})
 
-export const scrollbarStyles = {
-  WebkitOverflowScrolling: `touch`,
-  "&::-webkit-scrollbar": {
-    width: `6px`,
-    height: `6px`,
-  },
-  "&::-webkit-scrollbar-thumb": {
-    background: colors.ui.bright,
-  },
-  "&::-webkit-scrollbar-thumb:hover": {
-    background: colors.lilac,
-  },
-  "&::-webkit-scrollbar-track": {
-    background: colors.ui.light,
-  },
+export const disabledCursor = {
+  cursor: 'not-allowed',
 }
 
-export const buttonStyles = {
-  default: {
-    alignItems: `center`,
-    backgroundColor: colors.gatsby,
-    borderRadius: presets.radius,
-    borderWidth: 1,
-    borderStyle: `solid`,
-    borderColor: colors.gatsby,
-    boxShadow: `none`,
-    color: `#fff`,
-    cursor: `pointer`,
-    display: `inline-flex`,
-    fontFamily: options.headerFontFamily.join(`,`),
-    fontWeight: `bold`,
-    flexShrink: 0,
-    lineHeight: 1,
-    WebkitFontSmoothing: `antialiased`,
-    whiteSpace: `nowrap`,
-    padding: `${rhythm(2 / 5)} ${rhythm(1 / 2)}`,
-    backgroundSize: `30px 30px`,
-    transition: `all ${presets.animation.speedDefault} ${
-      presets.animation.curveDefault
-      }`,
-    ":hover, &:focus": {
-      backgroundSize: `30px 30px`,
-      backgroundColor: colors.gatsby,
-      backgroundImage: `linear-gradient(45deg, #ffffff50 25%, transparent 25%, transparent 50%, #ffffff50 50%, #ffffff50 75%, transparent 75%, transparent)`,
-      color: `#fff`,
-      animation: `${stripeAnimation} 2s linear infinite`,
+export const arrowMove = {
+  transform: 'translateX(0.4em)'
+}
+
+export const buttonStyles = (arrow = false) => {
+  return {
+    default: {
+      display: 'inline-flex',
+      alignItems: 'center',
+      borderRadius: 5,
+      borderWidth: 1,
+      borderStyle: 'solid',
+      borderColor: t => t.colors.border,
+      backgroundColor: hex2rgba('#FFFFFF', .15),
+      color: 'text',
+      cursor: 'pointer',
+      fontFamily: 'heading',
+      fontWeight: 'bold',
+      flexShrink: 0,
+      lineHeight: 'solid',
+      textDecoration: 'none',
+      whiteSpace: 'nowrap',
+      px: 3,
+      height: 36,
+      // width: '100%',
+      backgroundSize: '30px 30px',
+      transition: 'color ease-in .2s, background-color ease-in .2s',
+      '& svg': {
+        ...(arrow && { marginLeft: '.35em' }),
+        transition: 'transform ease-in .2s',
+      },
+      ':hover:enabled, :focus:enabled': {
+        backgroundColor: 'primary',
+        backgroundImage: 'linear-gradient(135deg, rgba(0,0,0, 0.1) 25%, transparent 25%, transparent 50%, rgba(0,0,0, 0.1) 50%, rgba(0,0,0, 0.1) 75%, transparent 75%, transparent)',
+        color: 'white',
+        animation: `${stripeAnimation} 1.8s linear infinite`,
+        // borderColor: 'gatsby',
+        '& svg': {
+          ...(arrow && arrowMove)
+        }
+      },
+      ':focus:enabled': { ...focusStyle },
+      ':after': { content: '\'\'', display: 'block' },
+      ':disabled': {
+        color: 'disabled',
+        ...disabledCursor
+      },
     },
-    ":focus": {
-      outline: 0,
-      boxShadow: `0 0 0 0.2rem ${hex2rgba(colors.lilac, 0.25)}`,
+    primary: {
+      backgroundColor: 'primary',
+      color: 'bright',
+      ':disabled': {
+        backgroundColor: 'secondary',
+        color: darken('bright', .15),
+        ...disabledCursor,
+      }
     },
-    ":after": { content: `''`, display: `block` },
-    "& svg": { marginLeft: `.2em` },
-    [presets.Tablet]: {
-      ...scale(1 / 5),
-      padding: `${rhythm(2 / 6)} ${rhythm(3 / 5)}`,
+    secondary: {
+      backgroundColor: 'secondary',
+      color: 'bright',
+      border: 0,
+      borderColor: 'secondary',
+      transition: 'color ease-in .2s, background-color ease-in .2s',
+      ':disabled': {
+        color: lighten('primary', .15),
+        // borderColor: 'border',
+        ...disabledCursor
+      },
     },
-    [presets.VHd]: { padding: `${rhythm(1 / 2)} ${rhythm(1)}` },
-  },
-  secondary: {
-    backgroundColor: `transparent`,
-    color: colors.gatsby,
-    fontWeight: `normal`,
-  },
-  large: {
-    // borderRadius: presets.radiusLg,
-    fontSize: scale(1 / 5).fontSize,
-    padding: `${rhythm(2 / 5)} ${rhythm(1 / 2)}`,
-    [presets.Tablet]: {
-      fontSize: scale(2 / 5).fontSize,
-      padding: `${rhythm(2 / 4)} ${rhythm(3 / 5)}`,
+    link: {
+      color: 'primary',
+      textDecoration: 'underline',
+      background: 'none',
+      border: 'none',
+      ':hover:enabled, :focus:enabled': {
+        background: 'none',
+        color: lighten('primary', .15),
+      }
     },
-    [presets.VHd]: { padding: `${rhythm(1 / 2)} ${rhythm(1)}` },
-  },
-  small: {
-    fontSize: scale(-1 / 3).fontSize,
-    padding: `${rhythm(2 / 5)} ${rhythm(1 / 2)}`,
-    [presets.Tablet]: {
-      fontSize: scale(-1 / 6).fontSize,
-      padding: `${rhythm(2 / 5)} ${rhythm(1 / 2)}`,
+    isSelected: {
+      backgroundColor: 'primary',
+      color: 'white',
+      ':disabled': {
+        backgroundColor: 'secondary',
+        color: darken('bright', .15),
+        ...disabledCursor
+      }
     },
-    [presets.VHd]: {
-      fontSize: scale(-1 / 6).fontSize,
-      padding: `${rhythm(2 / 5)} ${rhythm(1 / 2)}`,
+    white: {
+      backgroundColor: 'bright',
+      border: 0
     },
-  },
-  tiny: {
-    fontSize: scale(-1 / 3).fontSize,
-    padding: `${rhythm(1 / 5)} ${rhythm(1 / 3)}`,
-    [presets.Tablet]: {
-      fontSize: scale(-1 / 4).fontSize,
-      padding: `${rhythm(1 / 5)} ${rhythm(1 / 3)}`,
+    action: {
+      backgroundColor: 'transparent',
+      border: 0
     },
-    [presets.VHd]: {
-      fontSize: scale(-1 / 5).fontSize,
-      padding: `${rhythm(1 / 5)} ${rhythm(1 / 3)}`,
+    small: {
+      height: 30
     },
-  },
-  ondark: { border: `1px solid ${colors.ui.light}` },
-  redBtn: {
-    backgroundColor: colors.nio.red,
-    borderColor: colors.nio.red,
-    ":hover": {
-      backgroundColor: colors.nio.red,
+    large: {
+      height: 44
+    },
+    xlarge: {
+      height: 50
+    },
+    xxlarge: {
+      height: 60
     },
   }
-}
-
-export const svgStyles = {
-  active: {
-    "& .svg-stroke": {
-      strokeWidth: 1.4173,
-      strokeMiterlimit: 10,
-    },
-    "& .svg-stroke-accent": { stroke: colors.accent },
-    "& .svg-stroke-lilac": { stroke: colors.lilac },
-    "& .svg-stroke-gatsby": { stroke: colors.gatsby },
-    "& .svg-stroke-gradient-purple": { stroke: `url(#purple-top)` },
-    "& .svg-fill-lilac": { fill: colors.lilac },
-    "& .svg-fill-gatsby": { fill: colors.gatsby },
-    "& .svg-fill-accent": { fill: colors.accent },
-    "& .svg-fill-wisteria": { fill: colors.wisteria },
-    "& .svg-fill-brightest": { fill: `#fff` },
-    "& .svg-fill-gradient-accent-white-45deg": {
-      fill: `url(#accent-white-45deg)`,
-    },
-    "& .svg-fill-gradient-purple": { fill: `url(#lilac-gatsby)` },
-    "& .svg-fill-gradient-accent-white-bottom": {
-      fill: `url(#accent-white-bottom)`,
-    },
-    "& .svg-fill-gradient-accent-white-top": {
-      fill: `url(#accent-white-top)`,
-    },
-  },
-}
-
-export const transitions = {
-  default: `all ease-out .4s`,
-  slow: `all ease-out .6s`,
 }

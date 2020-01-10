@@ -1,7 +1,4 @@
-const colors = require(`./colors`).default
-
 module.exports = {
-  colors,
   small: `(max-width: 399px)`,
   Small: `@media (max-width: 399px)`,
   mobile: `(min-width: 400px)`,

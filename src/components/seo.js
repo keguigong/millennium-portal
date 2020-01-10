@@ -16,7 +16,7 @@ function SEO({ description, lang, meta, keywords, title }) {
               lang,
             }}
             title={title}
-            titleTemplate={`%s | ${data.site.siteMetadata.title} | 可圭共`}
+            titleTemplate={`%s | Millennium`}
             // titleTemplate={`%s::${data.site.siteMetadata.title}`}
             meta={[
               {
