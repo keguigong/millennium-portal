@@ -10,7 +10,7 @@ const CompanyValue = ({
 }) => (<Container sx={{
   px: [3, 4],
   position: 'relative',
-  top: -80
+  top: -80,
 }}>
   <div sx={{
     boxShadow: '0 4px 15px #00000020',
@@ -33,12 +33,17 @@ const CompanyValue = ({
       backgroundImage: dashedGradient,
       backgroundSize: '60px 60px'
     },
+    transition: 'all .3s ease-in',
+    ':hover': {
+      transform: 'scale(1.02)',
+      boxShadow: '0 4px 20px #00000050',
+    }
   }}>
     <BlingBling sx={{
       position: 'absolute',
       top: -1,
       left: -1
-    }}/>
+    }} />
     <div sx={{
       display: 'flex',
       alignItems: 'center',

@@ -74,7 +74,7 @@ const Footer = ({
     alignItems: 'center'
   }}>
     <Styled.p>{companyText.icp}</Styled.p>
-    <img src={police} sx={{ mx: 2, display: ['block'] }} />
+    <img src={police} sx={{ mx: 2, display: ['none', 'block'] }} />
     <Styled.p>{companyText.police}</Styled.p>
   </Container>
 </footer>)

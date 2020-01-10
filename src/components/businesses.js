@@ -1,22 +1,18 @@
 /** @jsx jsx */
 import { jsx, Styled } from 'theme-ui'
 import React from 'react'
-import { Container } from '.'
+import { Container, SectionTitle } from '.'
 
 const Businesses = ({
   companyText
 }) => (<Container sx={{
-  px: 3
+  px: 3,
+  py: 5
 }}>
-  <div sx={{
-    display: 'flex',
-    justifyContent: 'center',
-    flexDirection: 'column',
-    alignItems: 'center'
-  }}>
-    <Styled.h3 sx={{ mb: 0, color: 'title' }}>{companyText.businessesTitle}</Styled.h3>
-    <Styled.h4 sx={{ mt: 1 }}>{companyText.businessesTitleEn}</Styled.h4>
-  </div>
+  <SectionTitle {...{
+    title: companyText.businessesTitle,
+    titleEn: companyText.businessesTitleEn
+  }} />
   <div sx={{
     display: 'grid',
     mt: [3, 4],
@@ -31,7 +27,8 @@ const Businesses = ({
         flexDirection: 'column',
         alignItems: 'center',
         px: 3,
-        py: [2, 3]
+        py: [2, 3],
+        mt: [3, 3, 1],
       }}>
         <Styled.h5 sx={{
           position: 'relative',

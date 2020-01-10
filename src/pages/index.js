@@ -13,13 +13,14 @@ import {
   CompanyValue,
   Platforms,
   Businesses,
+  CompetitorComparison,
   Footer
 } from '../components'
 
 class App extends React.Component {
   render() {
     return <Layout>
-      <SEO 
+      <SEO
         title={companyText.webTitle}
         titleSuffix={companyText.webTitleSuffix}
         description={companyText.webDescription}
@@ -29,6 +30,7 @@ class App extends React.Component {
       <CompanyValue companyText={companyText} />
       <Businesses companyText={companyText} />
       <Platforms companyText={companyText} />
+      {/* <CompetitorComparison companyText={companyText} /> */}
       <Footer companyText={companyText} />
     </Layout>
   }
@@ -55,22 +57,22 @@ const companyText = {
     {
       title: '整车开发',
       background: bicycle,
-      description: '分时租赁电单，鸣享+；电动两轮车零售平台，鸣泷collection；电动两轮车自有品牌，Aurora极光；锂电两轮车的整车回收及二手锂电池回收，鸣金回收。'
+      description: '鸣泷具备独立的电动两轮车整车研发、生产以及销售能力，旗下拥有电动两轮车自有品牌，Aurora极光。极光集成了鸣泷实业下属多种行业领先的技术，具有续航里程长、电池安全性高以及快速的应急响应机制，结合到物联网云端监控平台，能够时刻为您保驾护航。'
     },
     {
       title: '云平台',
-      background: 'https://images.unsplash.com/photo-1547119957-637f8679db1e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3400&q=80',
-      description: '后台管理系统，车辆的后勤保障；运维员工专用APP，及时快速的响应故障；用户APP，便捷使用，迅速反馈；用户社区，结识更多志同道合的朋友。'
+      background: 'https://images.unsplash.com/photo-1547119957-637f8679db1e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80',
+      description: '吸取行业经验继承开发而来的鸣泷智能云平台后台管理系统，处于行业领先，能够为车辆以及备件提供完善的后勤保障，配合多种终端应用，运维APP、用户APP、以及用户社区，能够建立起车辆和用户之间的可靠的桥梁，时刻掌握车辆状态，享受及时专业的服务以及结交新的朋友，尽在智能云平台。'
     },
     {
       title: '智能电池',
       background: 'https://images.unsplash.com/photo-1534224039826-c7a0eda0e6b3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80',
-      description: '车用梯次VDA模组；IP67防护能力，可水下运行；自我诊断，实时更新自身健康状况；智能BMS，远程监控获取位置电量信息。'
+      description: '鸣泷采用的电池的模组为车用梯次VDA模组，能够提供IP67的防水防尘能力，甚至可以直接在水下运行，正常充放电。同时能够自我诊断，实时更新自身健康状况，始终处于最佳工作区间，配合上智能BMS，能够实时远程监控电池的位置电量信息，保障电池安全。'
     },
     {
       title: '智能硬件',
-      background: '',
-      description: '快充/换电技术；六大定位系统定位，辅以巡迹纠偏技术；iBeacon信号区域。'
+      background: 'https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80',
+      description: '勇猛的士兵同样需要与之匹配的盔甲和利剑，鸣泷旗下的电动车硬件同样出色。每一辆鸣泷出品的车辆均配备快充/换电技术，同时拥有六大定位系统定位，辅以巡迹纠偏技术，iBeacon信号区域，能够保证在车辆始终在安全区域骑行，保障正常运营。'
     },
   ],
   businessesTitle: '四大业务板块',
@@ -78,7 +80,7 @@ const companyText = {
   businesses: [
     {
       title: '鸣享出行',
-      description: '秋蝉的衰弱的残声，更是北国的特产；因为北平处处全长着树，屋子又低，所以无论在什么地方，都听得见它们的啼唱。在南方是非要上郊外或山上去才听得到的。这秋蝉的嘶叫，在北平可和蟋蟀耗子一样。'
+      description: '鸣享出行专注于电动两轮车分时租赁业务，选用鸣泷精心挑选的电动两轮车，搭配鸣享+APP以及完善的运维平台，为用户提供便捷的出行体验，带来不一样的出行感受。'
     },
     {
       title: '鸣泷Collection',
@@ -92,6 +94,59 @@ const companyText = {
       title: '鸣金Recycle',
       description: '鸣金回收会负责锂电两轮车的整车回收及二手锂电池回收，根据不同的车况状态及电池状态，梯次利用车架及锂电池，争取将资源利用到最大化，同时也为中国的环境保护负上企业该有的责任。'
     }
+  ],
+  comparisonTitle: '友商对比',
+  comparisonTitleEn: 'Competitor Comparison',
+  comparisonHeader: [
+    '品牌Brand',
+    '优势Advantages',
+    '劣势Disadvantages',
+    '核心竞争力Cores',
+    '企业定义Rankings',
+  ],
+  comparisonBody: [
+    {
+      brand: '鸣泷',
+      advantages: '智能中控/智能仪表/智能电池设计，用户企业/全民众筹分润，D2C式分销渠道，可以上牌照',
+      disadvantages: '初创阶段',
+      cores: '解决了准入问题，专业渠道下沉',
+      rankings: '3.0'
+    },
+    {
+      brand: '哈罗出行',
+      advantages: '蚂蚁金服/宁德时代资金支持，车型全，生态完整',
+      disadvantages: '车电比太高，经济性差',
+      cores: '支付宝相互引流',
+      rankings: '2.5'
+    },
+    {
+      brand: '滴滴街兔',
+      advantages: '滴滴出行品牌背书',
+      disadvantages: 'HW事业部受制于母公司政策，发展缓慢',
+      cores: '出行系统完整，服务效率高',
+      rankings: '2.0'
+    },
+    {
+      brand: '骑电',
+      advantages: '6线+县城准独家落地',
+      disadvantages: '融资难，团队流失',
+      cores: '下沉渠道建设完善',
+      rankings: '2.0'
+    },
+    {
+      brand: '小牛',
+      advantages: '高端品牌形象',
+      disadvantages: '放弃换电，放弃用户粘性',
+      cores: '设计感',
+      rankings: '2.0'
+    },
+    {
+      brand: '丰巢',
+      advantages: '进入两轮车换电服务生态',
+      disadvantages: '无行业经验',
+      cores: '现有强大服务网络改造较容易',
+      rankings: '2.0'
+    },
   ],
   copyright: `©️ Millennium 2019-${new Date().getFullYear()}`,
   icp: '沪ICP备00000000号-0',
