@@ -5,7 +5,8 @@ import { Container, BlingBling } from '.'
 import mln from '../images/ml-normal.svg'
 
 const CompanyValue = ({
-  companyText
+  companyText,
+  dashedGradient,
 }) => (<Container sx={{
   px: [3, 4],
   position: 'relative',
@@ -24,13 +25,13 @@ const CompanyValue = ({
     '&::after': {
       bottom: 0,
       content: '""',
-      height: 6,
+      height: 4,
       left: 0,
       right: 0,
       position: 'absolute',
       borderRadius: '0px 0px 5px 5px',
-      backgroundImage: 'linear-gradient(135deg, white 12.5%, #FF5A54 12.5%, #FF5A54 37.5%, white 37.5%, white 62.5%, #3FA8F4 62.5%, #3FA8F4 87.5%, white 87.5%, white 100%)',
-      backgroundSize: '60px 60px',
+      backgroundImage: dashedGradient,
+      backgroundSize: '60px 60px'
     },
   }}>
     <BlingBling sx={{
@@ -109,7 +110,8 @@ const CompanyValue = ({
 </Container>)
 
 CompanyValue.defaultProps = {
-  companyText: {}
+  companyText: {},
+  dashedGradient: 'linear-gradient(135deg, #FF5A54 12.5%, white 12.5%, white 25%, #3FA8F4 25%, #3FA8F4 37.5%, white 37.5%, white 50%, #FF5A54 50%, #FF5A54 62.5%, white 62.5%, white 75%, #3FA8F4 75%, #3FA8F4 87.5%, white 87.5%, white 100%)'
 }
 
 export default CompanyValue

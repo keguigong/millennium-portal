@@ -14,8 +14,8 @@ const SectionTitle = ({
     flexDirection: 'column',
     alignItems: 'center'
   }}>
-    <Styled.h3 sx={{ mb: 0, color: 'title' }}>{companyText.sectionTitle}</Styled.h3>
-    <Styled.h4 sx={{ mt: 1 }}>{companyText.sectionTitleEn}</Styled.h4>
+    <Styled.h3 sx={{ mb: 0, color: 'title' }}>{companyText.platformsTitle}</Styled.h3>
+    <Styled.h4 sx={{ mt: 1 }}>{companyText.platformsTitleEn}</Styled.h4>
   </div>
   <div sx={{
     display: 'grid',
@@ -25,7 +25,7 @@ const SectionTitle = ({
     justifyContent: 'center',
     textAlign: ['center', 'left']
   }}>
-    {companyText.platforms.map((platform, index) => (<React.Fragment>
+    {companyText.platforms.map((platform, index) => (<React.Fragment key={index}>
       <div sx={{
         display: 'flex',
         flexDirection: 'column',
@@ -33,7 +33,14 @@ const SectionTitle = ({
         px: [2, 3],
         py: [2, 3]
       }}>
-        <Styled.h5>{platform.name}</Styled.h5>
+        <Styled.h5 sx={{
+          position: 'relative',
+          ':before': {
+            content: `"${index + 1}."`,
+            fontSize: [5, 6],
+            color: 'highlight'
+          }
+        }}>{platform.name}</Styled.h5>
         <Styled.p>{platform.description}</Styled.p>
       </div>
     </React.Fragment>))}

@@ -4,7 +4,6 @@ import ReactTooltip from 'react-tooltip'
 
 import mln from '../images/ml-normal.svg'
 import police from '../images/cn-mps-number.png'
-import qrcode from '../images/qrcode.jpg'
 import { Container } from '.'
 import { Icon } from '../icon/icon-wrapper'
 
@@ -12,6 +11,7 @@ const Footer = ({
   companyText
 }) => (<footer>
   <Container sx={{
+    mt: [5, 6],
     display: 'flex',
     px: [3, 4],
     pt: [4, 5],
@@ -44,19 +44,19 @@ const Footer = ({
         <Icon name='Wechat' sx={{ mx: 2, height: [20, 24] }} />
       </a>
       <ReactTooltip id='wechat' globalEventOff='click'>
-        <img src={qrcode} height={96} />
+        <a>{companyText.wechat}</a>
       </ReactTooltip>
       <a data-tip data-for='phone' data-event='click focus'>
         <Icon name='Phone' sx={{ mx: 2, height: [20, 24] }} />
       </a>
       <ReactTooltip id='phone' globalEventOff='click'>
-        <a>(0755) 3633 6581</a>
+        <a>{companyText.phone}</a>
       </ReactTooltip>
       <a data-tip data-event='click focus'>
         <Icon name='Address' sx={{ mx: 2, height: [20, 24] }} />
       </a>
       <ReactTooltip globalEventOff='click'>
-        <a>上海市嘉定区博乐路70号</a>
+        <a>{companyText.address}</a>
       </ReactTooltip>
     </div>
   </Container>

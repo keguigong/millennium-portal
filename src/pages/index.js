@@ -2,24 +2,32 @@
 import { jsx } from 'theme-ui'
 import React from 'react'
 
+import qrcode from '../images/qrcode.jpg'
+
 import {
   SEO,
   Layout,
   Header,
   Main,
   CompanyValue,
-  Parts,
+  Platforms,
+  Businesses,
   Footer
 } from '../components'
 
 class App extends React.Component {
   render() {
     return <Layout>
-      <SEO title='Home' />
+      <SEO 
+        title={companyText.webTitle}
+        titleSuffix={companyText.webTitleSuffix}
+        description={companyText.webDescription}
+      />
       <Header companyText={companyText} />
       <Main companyText={companyText} backgroundImages={backgroundImages} />
       <CompanyValue companyText={companyText} />
-      <Parts companyText={companyText} />
+      <Platforms companyText={companyText} />
+      <Businesses companyText={companyText} />
       <Footer companyText={companyText} />
     </Layout>
   }
@@ -28,6 +36,9 @@ class App extends React.Component {
 export default App
 
 const companyText = {
+  webTitle: '上海鸣泷实业有限公司',
+  webTitleSuffix: '鸣泷实业 ｜ Millennium',
+  webDescription: '上海鸣泷实业有限公司官方网站 ｜ 鸣享+ ｜ 鸣泷collection ｜ Aurora极光 ｜ 鸣金回收',
   name: 'Millennium',
   en: 'Millennium Co., Ltd.',
   ch: '上海鸣泷实业有限公司',
@@ -39,8 +50,11 @@ const companyText = {
   copyright: `©️ Millennium 2019-${new Date().getFullYear()}`,
   icp: '沪ICP备012345678号-0',
   police: '沪公网安备 012345678910号',
-  sectionTitle: '四大技术平台',
-  sectionTitleEn: 'Four Advanced Platforms',
+  phone: '(0755) 3633 6581',
+  address: '上海市嘉定区博乐路70号',
+  wechat: <img src={qrcode} height={96} />,
+  platformsTitle: '四大技术平台',
+  platformsTitleEn: 'Four Advanced Platforms',
   platforms: [
     {
       name: '整车开发',
@@ -58,6 +72,30 @@ const companyText = {
       name: '智能硬件',
       description: '快充/换电技术；六大定位系统定位，辅以巡迹纠偏技术；iBeacon信号区域。'
     },
+  ],
+  businessesTitle: '四大业务板块',
+  businessesTitleEn: 'Four Business Parts',
+  businesses: [
+    {
+      title: '鸣享Plus',
+      background: 'https://images.unsplash.com/photo-1455641374154-422f32e234cd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2389&q=80',
+      description: '秋蝉的衰弱的残声，更是北国的特产；因为北平处处全长着树，屋子又低，所以无论在什么地方，都听得见它们的啼唱。在南方是非要上郊外或山上去才听得到的。这秋蝉的嘶叫，在北平可和蟋蟀耗子一样。'
+    },
+    {
+      title: '鸣泷Collection',
+      background: 'https://images.unsplash.com/photo-1575530818494-4944cf0eb96c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1949&q=80',
+      description: '江南，秋当然也是有的；但草木雕得慢，空气来得润，天的颜色显得淡，并且又时常多雨而少风。'
+    },
+    {
+      title: '极光AURORA',
+      background: 'https://images.unsplash.com/photo-1531403009284-440f080d1e12?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80',
+      description: '南国之秋，当然是也有它的特异的地方的，比如廿四桥的明月，钱塘江的秋潮，普陀山的凉雾，荔枝湾的残荷等等，可是色彩不浓，回味不永。比起北国的秋来，正象是黄酒之与白干，稀饭之与馍馍，鲈鱼之与大蟹，黄犬之与骆驼。'
+    },
+    {
+      title: '鸣金回收',
+      background: 'https://images.unsplash.com/photo-1523540939399-141cbff6a8d7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80',
+      description: '有些批评家说，中国的文人学士，尤其是诗人，都带着很浓厚的颓废色彩，所以中国的诗文里，颂赞秋的文字特别的多。'
+    }
   ]
 }
 
