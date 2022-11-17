@@ -1,4 +1,8 @@
-## [Millennium Webpage](https://millennium-web.keguigong.now.sh/)
+## Millennium Portal
+
+A single showcase page designed for Shanghai Minglong Technology Co., Ltd.
+
+[GO TO PORTAL](https://millennium-web.keguigong.now.sh/)
 
 ## Quick start
 
