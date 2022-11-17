@@ -1,4 +1,4 @@
-## Millennium Portal
+## Shanghai Minglong Portal
 
 A single showcase page designed for Shanghai Minglong Technology Co., Ltd.
 
